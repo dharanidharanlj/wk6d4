@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form" onsubmit="return register(event)">
+            <h2>Register</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="index.html">Login here</a></p>
+    </div>
+
+    <script>
+        function register(event) {
+            event.preventDefault();
+            // Get the values entered in the registration form
+            var inputUsername = document.getElementById("username").value;
+            var inputEmail = document.getElementById("email").value;
+            var inputPassword = document.getElementById("password").value;
+
+            // Check if the user already exists in local storage
+            var users = JSON.parse(localStorage.getItem('users')) || [];
+            var existingUser = users.find(function(user) {
+                return user.username === inputUsername;
+            });
+
+            if (existingUser) {
+                alert("Username already exists. Please choose another one.");
+            } else {
+                // Add the new user to the local storage
+                users.push({ username: inputUsername, email: inputEmail, password: inputPassword });
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('uname', inputUsername);
+
+                alert("Registration successful!");
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+
+
+            <!-- // localStorage.setItem("username", username);
+            // localStorage.setItem("email", email);
+            // localStorage.setItem("password", password);
+
+            // alert("Registration successful!");
+
+            // You can optionally redirect the user to the login page here.
+            // window.location.href = "index.html"; -->
+
+            <!-- return true; // Allow the form to submit
+        } -->
+
+</body>
+</html>

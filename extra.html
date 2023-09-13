@@ -1,0 +1,54 @@
+<head>
+    <title>About us</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    <ul class="menu-bar">
+        <li><a href="school.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="studentprofile.html">Student Profile</a></li>
+        <li><a href="timetable.html">Time Table</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="monthly.html">Monthly Activity</a></li>
+        <li><a href="extra.html">Extra Activity</a></li>
+        <li class="b"><span id="name"></span></li>
+    </ul>
+    <h1>Extra Activities for the Day</h1>
+    <div class="activity-input">
+        <input type="text" id="activity" placeholder="Enter an activity">
+        <button onclick="addActivity()">Submit</button>
+    </div>
+    <br>
+    <div class="activity-list">
+        <h2>Today's Activities</h2>
+        <ul id="activityList"></ul>
+    </div>
+    <script>
+        // Function to retrieve the student's name
+        $(document).ready(function(){
+            document.getElementById("name").innerHTML=localStorage.getItem('uname');
+        });
+
+        // Get references to HTML elements
+        const activityInput = document.getElementById("activity");
+        const activityList = document.getElementById("activityList");
+
+        // Function to add a new activity
+        function addActivity() {
+            const activityText = activityInput.value.trim();
+            if (activityText !== "") {
+                // Create a new list item
+                const listItem = document.createElement("li");
+                listItem.textContent = activityText;
+        
+                // Add the new activity to the list
+                activityList.appendChild(listItem);
+        
+                // Clear the input field
+                activityInput.value = "";
+            }
+        }
+    </script>
+
+</body>

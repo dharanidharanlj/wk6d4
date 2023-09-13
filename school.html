@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Flowers</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    <!-- Menu bar -->
+    <ul class="menu-bar">
+        <li><a href="school.html?username=" + enteredUsername;>Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="studentprofile.html">Student Profile</a></li>
+        <li><a href="timetable.html">Time Table</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="monthly.html">Monthly Activity</a></li>
+        <li><a href="extra.html">Extra Activity</a></li>
+        <li class="b"><span id="name"></span></li>
+    </ul>
+
+
+    <br>
+    <center style="background-color: #f4f4f4;  " >
+        <img src="logo.png" alt="School_logo">
+        <br>
+    </center>
+
+    <section class="intro">
+        <h1>Welcome to Spring Flower School</h1>
+        <p>At Spring Flower School, we believe that education is a journey, and every child deserves a nurturing and enriching environment to blossom into their full potential. Our school is more than just a place of learning; it's a community where students, teachers, and parents come together to foster holistic development and create a bright future.</p>
+    </section>
+
+    <section class="mission">
+        <h2>Our Mission</h2>
+        <p>At Spring Flower School, our mission is to provide a comprehensive and dynamic education that empowers students to excel academically, develop essential life skills, and become responsible global citizens. We aim to inspire a love for learning, creativity, and critical thinking.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Spring Flower School</p>
+    </footer>
+
+    <script>
+        // Function to retrieve the student's name
+        $(document).ready(function(){
+            document.getElementById("name").innerHTML=localStorage.getItem('uname');
+        });
+    </script>
+</body>
+</html>

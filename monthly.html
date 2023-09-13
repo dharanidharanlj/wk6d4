@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Activity Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    <ul class="menu-bar">
+        <li><a href="school.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="studentprofile.html">Student Profile</a></li>
+        <li><a href="timetable.html">Time Table</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="monthly.html">Monthly Activity</a></li>
+        <li><a href="extra.html">Extra Activity</a></li>
+        <li class="b"><span id="name"></span></li>
+    </ul>
+
+    <h1><center>Monthly Activity</center></h1>
+
+    <!-- Create a drop-down menu for selecting subjects -->
+    <label for="subjectSelect">Select Subject: </label>
+    <select id="subjectSelect" onchange="displayActivities()">
+        <option value="Maths">Maths</option>
+        <option value="Science">Science</option>
+        <option value="P.E">P.E</option>
+        <option value="English">English</option>
+        <!-- Add more subjects as needed -->
+    </select>
+
+    <br>
+    <br>
+    <br>
+
+    <h2>Monthly Activities</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Activity</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody id="activityList">
+            <!-- Monthly activities will be displayed here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Define an array to store monthly activities
+        var monthlyActivities = [
+            {
+                id: 1,
+                activity: "Create project file which contains tables between 12 to 19",
+                subject: "Maths",
+                date: "01/06/2023",
+                comments:[]
+            },
+            {
+                id: 2,
+                activity: "Perform science experiment 1",
+                subject: "Science",
+                date: "05/06/2023",
+                comments:[]
+            },
+            {
+                id: 3,
+                activity: "Read chapter-1 from the English book",
+                subject: "English",
+                date: "13/06/2023",
+                comments:[]
+            },
+            {
+                id: 4,
+                activity: "Cricket",
+                subject: "P.E",
+                date: "16/06/2023",
+                comments:[]
+            },
+            {
+                id: 5,
+                activity: "Class on Algebra I",
+                subject: "Maths",
+                date:"02/06/2023",
+                comments:[]
+            },
+            {
+                id: 9,
+                activity: "Class on Algebra II",
+                subject: "Maths",
+                date:"03/06/2023",
+                comments:[]
+            },
+            {
+                id: 13,
+                activity: "Class on Algebra II",
+                subject: "Maths",
+                date:"04/06/2023",
+                comments:[]
+            },
+            {
+                id: 6,
+                activity: "Perform science experiment 2",
+                subject: "Science",
+                date:"08/06/2023",
+                comments:[]
+            },
+            {
+                id: 10,
+                activity: "Perform science experiment 3",
+                subject: "Science",
+                date:"09/06/2023",
+                comments:[]
+            },
+            {
+                id: 14,
+                activity: "Attend science lecture",
+                subject: "Science",
+                date:"10/06/2023",
+                comments:[]
+            },
+            {
+                id: 7,
+                activity: "Read chapter-2 from the English book",
+                subject: "English",
+                date:"14/06/2023",
+                comments:[]
+            },
+            {
+                id: 11,
+                activity: "Read chapter-3 from the English book",
+                subject: "English",
+                date:"15/06/2023",
+                comments:[]
+            },
+            {
+                id: 8,
+                activity: "Football",
+                subject: "P.E",
+                date:"19/06/2023",
+                comments:[]
+            }
+
+
+            // Add more activities and subjects as needed
+        ];
+
+        // Function to display monthly activities in a table
+        function displayActivities() {
+            var subjectSelect = document.getElementById("subjectSelect");
+            var selectedSubject = subjectSelect.value;
+
+            var activityList = document.getElementById("activityList");
+
+            // Clear the previous table of activities
+            activityList.innerHTML = "";
+
+            // Filter activities based on the selected subject
+            const filteredActivities = monthlyActivities.filter(activity => activity.subject === selectedSubject);
+
+            // Display filtered activities in a table
+            filteredActivities.forEach(activity => {
+                const row = document.createElement("tr");
+                const idCell = document.createElement("td");
+                idCell.textContent = activity.id;
+                row.appendChild(idCell);
+                const dateCell = document.createElement("td");
+                dateCell.textContent = activity.date;
+                row.appendChild(dateCell);
+                const activityCell = document.createElement("td");
+                activityCell.textContent = activity.activity;
+                row.appendChild(activityCell);
+        
+                // Create a cell for comments
+                const commentCell = document.createElement("td");
+        
+                // Check if the activity has comments
+                if (activity.comments && activity.comments.length > 0) {
+                    // Create a list to display comments
+                    const commentList = document.createElement("ul");
+                    activity.comments.forEach(comment => {
+                        const commentItem = document.createElement("li");
+                        commentItem.textContent = comment;
+                        commentList.appendChild(commentItem);
+                    });
+                    commentCell.appendChild(commentList);
+                } else {
+                    // If there are no comments, display "No comments"
+                    commentCell.textContent = "No comments";
+                }
+        
+                row.appendChild(commentCell);
+
+                // Create a button to add comments
+                const commentButton = document.createElement("button");
+                commentButton.textContent = "Add Comment";
+                commentButton.onclick = function () {
+                    // Call a function to handle adding comments when the button is clicked
+                    addComment(activity.id);
+                };
+                row.appendChild(commentButton);
+                activityList.appendChild(row);
+            });
+        }
+
+
+        // Initially display activities for the default subject (e.g., Maths)
+        displayActivities();
+
+        
+        // Function to retrieve the student's name
+        $(document).ready(function(){
+            document.getElementById("name").innerHTML=localStorage.getItem('uname');
+        });
+
+
+        
+        // Function to add comments for a specific activity
+        // Function to add comments for a specific activity
+        function addComment(activityId) {
+            const comment = prompt("Enter your comment:");
+            if (comment !== null) {
+                // Find the index of the activity with the given ID
+                const activityIndex = monthlyActivities.findIndex(activity => activity.id === activityId);
+
+                // Check if the activity has a comments array, if not, create one
+                if (!monthlyActivities[activityIndex].comments) {
+                    monthlyActivities[activityIndex].comments = [];
+                }
+
+                // Add the comment to the activity's comments array
+                monthlyActivities[activityIndex].comments.push(comment);
+
+                // Update the table to display the new comment
+                displayActivities();
+            }
+        }
+
+    </script>
+
+    <footer>
+        <p>&copy; 2023 Spring Flower School</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About us</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <ul class="menu-bar">
+        <li><a href="school.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="studentprofile.html">Student Profile</a></li>
+        <li><a href="timetable.html">Time Table</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="monthly.html">Monthly Activity</a></li>
+        <li><a href="extra.html">Extra Activity</a></li>
+        <li class="b"><span id="name"></span></li>
+    </ul>
+    <section class="mission">
+        <h2>Our Mission</h2>
+        <p>At Spring Flower School, our mission is to provide a comprehensive and dynamic education that empowers students to excel academically, develop essential life skills, and become responsible global citizens. We aim to inspire a love for learning, creativity, and critical thinking.</p>
+    </section>
+
+    <section class="why">
+        <h2>Why Choose Spring Flower School?</h2>
+        <h3>Holistic Education:</h3>
+        <p>We offer a well-rounded education that nurtures not only academic excellence but also physical, emotional, and social development. Our curriculum is designed to address the needs of the whole child.</p>
+        <h3>Dedicated Educators:</h3>
+        <p>Our experienced and passionate teachers are committed to creating engaging and supportive learning environments. They use innovative teaching methods to cater to diverse learning styles.</p>
+        <h3>Character Development:</h3>
+        <p>We prioritize character education, instilling values such as integrity, respect, and empathy in our students. We believe that building strong character is essential for success in life.</p>
+        <h3>Extracurricular Activities:</h3>
+        <p>At Spring Flower School, students have access to a wide range of extracurricular activities, including sports, arts, music, and clubs. These activities promote teamwork, leadership, and personal growth.</p>
+        <h3>State-of-the-Art Facilities:</h3>
+        <p>Our campus is equipped with modern facilities and resources that enhance the learning experience. From well-equipped classrooms to science labs and libraries, we provide the tools necessary for academic growth.</p>
+    </section>
+
+    <section class="join">
+        <h2>Join the Spring Flower School Community</h2>
+        <p>We invite you to join our Spring Flower School community and embark on an educational journey that will inspire growth, creativity, and lifelong learning. Explore our website to learn more about our programs, faculty, and admissions process.</p>
+        <p>At Spring Flower School, we believe that every child is a unique and beautiful flower, waiting to bloom. Come, be a part of our garden of knowledge and watch your child flourish.</p>
+        
+    </section>
+    <footer>
+        <p>&copy; 2023 Spring Flower School</p>
+    </footer>
+
+    <script>
+        // Function to retrieve the student's name
+        $(document).ready(function(){
+            document.getElementById("name").innerHTML=localStorage.getItem('uname');
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <form class="form" onsubmit="return login()">
+            <h2>Login</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+
+    <script>
+        function login() {
+            event.preventDefault();
+            // Get the entered username and password
+            var inputUsername = document.getElementById("username").value;
+            var inputPassword = document.getElementById("password").value;
+
+            // Check if the entered username and password match those in local storage
+            var users = JSON.parse(localStorage.getItem('users')) ||[];
+            var existingUser = users.find(function(user){
+                return user.username === inputUsername && user.password === inputPassword;
+            });
+
+            if (existingUser){
+                localStorage.setItem('uname', inputUsername);
+                window.location.href="school.html"
+            }else {
+                alert("Invalid username or password. Please try again.");
+                return false; // Prevent the form from submitting
+            }
+            
+        }
+    </script>
+    
+</body>
+</html>

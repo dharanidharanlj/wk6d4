@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Time Table</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <ul class="menu-bar">
+        <li><a href="school.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="studentprofile.html">Student Profile</a></li>
+        <li><a href="timetable.html">Time Table</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="monthly.html">Monthly Activity</a></li>
+        <li><a href="extra.html">Extra Activity</a></li>
+        <li class="b"><span id="name"></span></li>
+    </ul>
+
+    <h1>Student Profile</h1>
+    <table>
+        <tr>
+            <th>Si.no</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Grade</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>15</td>
+            <td>Raj</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>20</td>
+            <td>Jullia</td>
+            <td>10</td>
+        </tr>
+
+
+
+
+
+
+
+
+
+
+<footer>
+    <p>&copy; 2023 Spring Flower School</p>
+</footer>
+<script>
+    // Function to retrieve the student's name
+    $(document).ready(function(){
+        document.getElementById("name").innerHTML=localStorage.getItem('uname');
+    });
+</script>
+</body>
+
+</html>
